@@ -1,0 +1,1 @@
+{"name":"ec-cube\/JsysSalesPeriod","version":"1.0.0","description":"\u8ca9\u58f2\u671f\u9593\u8a2d\u5b9a\u30d7\u30e9\u30b0\u30a4\u30f3","type":"eccube-plugin","require":{"ec-cube\/plugin-installer":"~0.0.7"},"extra":{"code":"JsysSalesPeriod","id":2279}}

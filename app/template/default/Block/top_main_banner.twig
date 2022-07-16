@@ -1,0 +1,71 @@
+{% if app.request.requesturi == '/' %}
+<div class="ec-layoutRole__mainBottom">
+    <div class="bana"><img src="{{ asset('assets/img/top/bana-.jpg') }}" /></div>
+    {% set News = repository('Eccube\\Entity\\News').getLatestNews() %}
+    <div class="ec-role">
+        <div class="top-165">
+            <a href="{{ url('news_detail') }}"> 
+            <strong>{{ News.title }}</strong>        
+            </a>
+        </div>
+    </div>
+    <div class="ec-role">
+        <div class="center-3-imgs">
+            <a target="_blank" style="width:100%;padding:0" href="{{ url('entry_prem') }}"><img src="{{ asset('assets/img/top/magazine_new.jpg') }}" /></a>
+        </div>
+    </div>
+        <div class="ec-role">
+        <div class="center-3-imgs">
+            <a target="_blank" style="width:100%;padding:0" href="https://zaiko.shop-pro.jp/"><img src="{{ asset('assets/img/top/banner.jpg') }}" /></a>
+        </div>
+    </div>
+    <div class="ec-role">
+        <div class="site-name">「儲かる問屋サイト　アパレル卸問屋.com」</div>
+        <div class="top-main-2">
+            <a href="{{ url('mypage_change') }}">
+                <img src="{{ asset('assets/img/top/top_main_2.jpg') }}" />
+            </a>
+        </div>
+        <div class="center-3-imgs">
+            <a href="{{ url('homepage') }}?mode=cate&category_id=2" >
+                <img src="{{ asset('assets/img/top/top_main_cat_1.jpg') }}" />
+            </a>
+            <a href="{{ url('homepage') }}?mode=cate&category_id=1" >
+                <img src="{{ asset('assets/img/top/top_main_cat_5.jpg') }}" />
+            </a>
+            <a href="{{ url('homepage') }}?mode=cate&category_id=33" >
+                <img src="{{ asset('assets/img/top/top_main_cat_7.jpg') }}" />
+            </a>
+        </div>
+    </div>
+     <div class="ec-role">
+        <div class="site-name">毎月開催無料セミナーのお知らせ</div>
+            <a href="https://shoichi.co.jp/info/setsumeikai.php" target="_blank">
+                <img class="w-40" src="{{ asset('assets/img/top/ResaleSeminar.jpg') }}" />
+            </a>
+    </div>
+    <div class="ec-role">
+        <div class="site-name">新商品のお知らせはSNSから</div>
+            <a href="https://www.facebook.com/%E3%82%A2%E3%83%91%E3%83%AC%E3%83%AB%E5%8D%B8%E5%95%8F%E5%B1%8B-198069337724749/?modal=admin_todo_tour" target="_blank">
+                <img class="social" src="{{ asset('assets/img/top/FB.png') }}" />
+            </a>
+            <a href="https://twitter.com/com72482496" target="_blank">
+                <img class="social" src="{{ asset('assets/img/top/tw.png') }}" />
+            </a>
+            <a href="https://www.instagram.com/appareloroshitonya/?hl=ja" target="_blank">
+                <img class="social" src="{{ asset('assets/img/top/insuta.png') }}" />
+            </a>
+    </div>
+    <div class="ec-role">
+        <div class="site-name">新着記事</div>
+        <div class="center-2-imgs">
+            <a href="{{ url('homepage') }}?mode=f1">
+                <img src="{{ asset('assets/img/top/n01.png') }}" />
+            </a>
+            <a href="{{ url('homepage') }}?mode=f15">
+                <img src="{{ asset('assets/img/top/n15.png') }}" />
+            </a>
+        </div>
+    </div>
+</div>
+{% endif %}

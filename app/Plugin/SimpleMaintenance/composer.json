@@ -1,0 +1,1 @@
+{"name":"ec-cube\/SimpleMaintenance","version":"1.0.0","description":"\u30e1\u30f3\u30c6\u30ca\u30f3\u30b9","type":"eccube-plugin","require":{"ec-cube\/plugin-installer":"~0.0.4"},"extra":{"code":"SimpleMaintenance","id":1716}}

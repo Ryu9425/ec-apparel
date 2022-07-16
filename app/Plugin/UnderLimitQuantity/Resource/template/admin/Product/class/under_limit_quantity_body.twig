@@ -1,0 +1,9 @@
+{% set plgForm = product_class_form.UnderQuantity %}
+<td class="align-middle">
+    <div class="col-2">
+        {{ form_widget(plgForm.quantity) }}
+    </div>
+    <div class="col-auto">
+        {{ form_errors(plgForm.quantity) }}
+    </div>
+</td>

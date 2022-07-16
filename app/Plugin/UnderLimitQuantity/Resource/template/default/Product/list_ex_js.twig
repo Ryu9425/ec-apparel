@@ -1,0 +1,65 @@
+<script>
+    {% set under_limit_quantity_list = get_under_limit_quantity_data_list(pagination) %}
+    var under_limit_quantity_list = JSON.parse('{{ under_limit_quantity_list|raw }}');
+
+    $('select[name=classcategory_id1]').change(function () {
+
+        var $form = $(this).parents('form');
+        var $sele1 = $(this);
+        var $sele2 = $form.find('select[name=classcategory_id2]');
+
+        if(!$sele2.length) {
+            setUnderQuantity($form, $sele1.val(), null);
+        } else {
+            console.log('選択クリア');
+            $form.find('[name="quantity"]').val(1);
+        }
+    });
+
+    $('select[name=classcategory_id2]').change(function () {
+
+        var $form = $(this).parents('form');
+        var $sele1 = $form.find('select[name=classcategory_id1]');
+        var $sele2 = $(this);
+
+        setUnderQuantity($form, $sele1.val(), $sele2.val());
+    });
+
+    function setUnderQuantity($form, classcat_id1, classcat_id2) {
+
+        var product_id = $form.find('[name="product_id"]').val();
+        console.log('product_id=' + product_id);
+
+        classcat_id2 = classcat_id2 ? classcat_id2 : '';
+
+        var classcat2 = 'undefined';
+        if (typeof eccube.productsClassCategories[product_id][classcat_id1] !== 'undefined') {
+            classcat2 = eccube.productsClassCategories[product_id][classcat_id1]['#' + classcat_id2];
+        }
+
+        if (typeof classcat2 === 'undefined') {
+            // 初期値設定
+            console.log('初期値設定');
+            var default_under_quantity = under_limit_quantity_list['product'][product_id];
+            $form.find('[name="quantity"]').val(default_under_quantity);
+        } else {
+            var product_class_id = classcat2.product_class_id;
+            if(typeof under_limit_quantity_list['productClass'][product_class_id] !== 'undefined') {
+                if(under_limit_quantity_list['productClass'][product_class_id] == "") {
+                    // 格納値なし
+                    console.log("格納値なし");
+                    $form.find('[name="quantity"]').val(1);
+                } else {
+                    // 値設定
+                    console.log("値設定");
+                    var under_quantity = under_limit_quantity_list['productClass'][product_class_id];
+                    $form.find('[name="quantity"]').val(under_quantity);
+                }
+            } else {
+                // 設定値なし
+                console.log("設定値なし");
+                $form.find('[name="quantity"]').val(1);
+            }
+        }
+    }
+</script>

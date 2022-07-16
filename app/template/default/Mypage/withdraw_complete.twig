@@ -1,0 +1,76 @@
+{#
+This file is part of EC-CUBE
+
+Copyright(c) EC-CUBE CO.,LTD. All Rights Reserved.
+
+http://www.ec-cube.co.jp/
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+#}
+{% extends 'default_frame.twig' %}
+
+{% set mypageno = 'withdraw' %}
+
+{% set body_class = 'mypage' %}
+
+{% block main %}
+    {% if currentStatus=="exitStatus" %}
+        <div class="ec-layoutRole__main">
+            <div class="ec-mypageRole">
+                <div class="ec-pageHeader">
+                    <h1>{{ 'マイページ'|trans }}/{{ '退会手続き'|trans }}</h1>
+                </div>
+            </div>
+            <div class="ec-mypageRole">
+                <div class="ec-withdrawCompleteRole">
+                    <div class="ec-off4Grid">
+                        <div class="ec-off4Grid__cell">
+                            <div class="ec-reportHeading">
+                                <h2>{{ '退会が完了いたしました'|trans }}</h2>
+                            </div>
+                            <p class="ec-reportDescription">{{ 'ご利用いただき誠にありがとうございました.
+            またのご来店をお待ちしております.
+            '|trans|nl2br }}</p>
+                            <p><a href="{{url('homepage') }}"
+                                    class="ec-blockBtn--cancel">{{ 'トップページへ'|trans }}</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else  %}
+        <div class="ec-layoutRole__main">
+            <div class="ec-mypageRole">
+                <div class="ec-pageHeader">
+                    <h1>{{ 'マイページ'|trans }}/{{ '有料会員'|trans }}</h1>
+                </div>
+                {% include 'Mypage/navi.twig' %}
+            </div>
+            <div class="ec-mypageRole">
+                <div class="ec-withdrawCompleteRole">
+                    <div class="ec-off4Grid">
+                        <div class="ec-off4Grid__cell">
+                            <div class="ec-reportHeading">
+                                <h2>{{ '退会が完了いたしました'|trans }}</h2>
+                            </div>
+                            <p class="ec-reportDescription">{{ 'ご利用いただき誠にありがとうございました.またのご来店をお待ちしております.'|trans|nl2br }}</p>
+                            
+                            <p style="display: flex;">
+                                <a style="width:50%;margin:5px; background-color: #0530ff;border: 1px solid #0530ff;" class="ec-withdrawConfirmRole__cancel ec-col ec-blockBtn--cancel" href="{{ url('mypage_withdraw_complete', {'status' : 'complete','customer': customer})}}"
+                                class="ec-blockBtn--cancel">{{ 'はい'|trans }}</a>
+                                <a style="width:50%;margin:5px; background-color: #525263;border: 1px solid #525263;" class="ec-withdrawConfirmRole__cancel ec-blockBtn--cancel" href="{{ url('mypage') }}">
+                                {{ 'いいえ'|trans }}
+                                </a>
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {# {% else %}  
+    <h1>  Complete </h1> #}
+    {%endif%}
+    
+{% endblock %}

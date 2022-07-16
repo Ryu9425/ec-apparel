@@ -1,0 +1,12 @@
+{#
+販売期間設定プラグイン(JsysSalesPeriod)
+フロント > 商品一覧・詳細
+ - カートインボタン置き換え用の販売前ボタン
+#}
+<button type="button" class="ec-blockBtn--action" disabled="disabled">
+  {% if JsysSalesPeriodConfig.btnstrBeforeSale|default is empty %}
+    {{ 'jsys_sales_period.btnstr.before_sale.default'|trans }}
+  {% else %}
+    {{ JsysSalesPeriodConfig.btnstrBeforeSale }}
+  {% endif %}
+</button>

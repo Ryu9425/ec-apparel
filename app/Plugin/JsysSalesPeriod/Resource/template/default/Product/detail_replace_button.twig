@@ -1,0 +1,33 @@
+{#
+販売期間設定プラグイン(JsysSalesPeriod)
+フロント > 商品詳細
+ - 販売前・終了後に表示する商品のカートボタンを置き換えるjsを追加
+#}
+<script>
+  $(function() {
+      let $before   = "{% apply escape('js') %}{{ include('@JsysSalesPeriod/default/Product/button_before_sale.twig', {'JsysSalesPeriodConfig': JsysSalesPeriodConfig}) }}{% endapply %}";
+      let $finished = "{% apply escape('js') %}{{ include('@JsysSalesPeriod/default/Product/button_finished.twig', {'JsysSalesPeriodConfig': JsysSalesPeriodConfig}) }}{% endapply %}";
+
+      {# 販売前 #}
+      {% if Product.isJsysSalesPeriodBeforeSale %}
+          {% if Product.stock_find %}
+              $('#form1 div.ec-productRole__btn button[type="submit"].add-cart')
+                  .replaceWith($before);
+          {% else %}
+              $('#form1 div.ec-productRole__btn button[type="button"].ec-blockBtn--action:disabled')
+                  .replaceWith($before);
+          {% endif %}
+      {% endif %}
+
+      {# 終了後 #}
+      {% if Product.isJsysSalesPeriodFinishedSale %}
+          {% if Product.stock_find %}
+              $('#form1 div.ec-productRole__btn button[type="submit"].add-cart')
+                  .replaceWith($finished);
+          {% else %}
+              $('#form1 div.ec-productRole__btn button[type="button"].ec-blockBtn--action:disabled')
+                  .replaceWith($finished);
+          {% endif %}
+      {% endif %}
+  });
+</script>

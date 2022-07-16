@@ -1,0 +1,95 @@
+{% extends '@admin/default_frame.twig' %}
+
+{% set menus = ['store', 'plugin', 'plugin_list'] %}
+
+{% block title %}{{ 'simple_maintenance.config_title'|trans }}{% endblock %}
+{% block sub_title %}{{ 'simple_maintenance.config_sub_title'|trans }}{% endblock %}
+
+{% form_theme form '@admin/Form/bootstrap_4_horizontal_layout.html.twig' %}
+
+{% block javascript %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.8/ace.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.8/ext-language_tools.js"></script>
+    <script>
+        ace.require('ace/ext/language_tools');
+        var editor = ace.edit('editor');
+        editor.session.setMode('ace/mode/twig');
+        editor.setTheme('ace/theme/tomorrow');
+        editor.setValue('{{ form.page_html.vars.value|escape('js') }}');
+        editor.setOptions({
+            enableBasicAutocompletion: true,
+            enableSnippets: true,
+            enableLiveAutocompletion: true,
+            showInvisibles: true
+        });
+
+        $('#config_form').on('submit', function(elem) {
+            $('#config_page_html').val(editor.getValue());
+        });
+    </script>
+{% endblock %}
+
+{% block main %}
+
+    <form id="config_form" role="form" method="post" action="">
+
+        {{ form_widget(form._token) }}
+
+        <div class="c-contentsArea__cols">
+            <div class="c-contentsArea__primaryCol">
+                <div class="c-primaryCol">
+                    <div class="card rounded border-0 mb-4">
+                        <div class="card-header"><span>{{ 'simple_maintenance.config_header'|trans }}</span></div>
+                        <div class="card-body">
+                            <div class="row mb-2">
+                                <div class="col-2"><span>{{ 'simple_maintenance.config_mente_mode'|trans }}</span></div>
+                                <div class="col mb-2">
+                                    {{ form_widget(form.mente_mode) }}
+                                    {{ form_errors(form.mente_mode) }}
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-2"><span>{{ 'simple_maintenance.config_admin_close_flg'|trans }}</span></div>
+                                <div class="col mb-2">
+                                    {{ form_widget(form.admin_close_flg) }}
+                                    {{ form_errors(form.admin_close_flg) }}
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-2"><span>{{ 'simple_maintenance.config_page_html'|trans }}</span></div>
+                                <div class="col-10">
+                                    <div id="editor" style="height: 480px" class="form-control{{ has_errors(form.page_html) ? ' is-invalid' }}"></div>
+                                    <div style="display: none">{{ form_widget(form.page_html) }}</div>
+                                    {{ form_errors(form.page_html) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="c-conversionArea">
+            <div class="c-conversionArea__container">
+                <div class="row justify-content-between align-items-center">
+                    <div class="col-6">
+                        <div class="c-conversionArea__leftBlockItem">
+                            <a class="c-beseLink"
+                               href="{{ url('admin_store_plugin') }}">
+                                <i class="fa fa-backward" aria-hidden="true"></i>
+                                <span>{{ 'simple_maintenance.config_back'|trans }}</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="row align-items-center justify-content-end">
+                            <div class="col-auto">
+                                <button class="btn btn-ec-conversion px-5" type="submit">{{ 'admin.common.save'|trans }}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+{% endblock %}

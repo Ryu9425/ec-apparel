@@ -1,0 +1,1 @@
+{"name":"ec-cube\/underlimitquantity","version":"1.1.0","description":"\u6700\u4f4e\u8cfc\u5165\u6570\u8a2d\u5b9a","type":"eccube-plugin","require":{"ec-cube\/plugin-installer":"~0.0.6 || ^2.0"},"extra":{"code":"UnderLimitQuantity","id":1969}}

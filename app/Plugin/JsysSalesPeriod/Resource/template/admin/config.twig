@@ -1,0 +1,79 @@
+{% extends '@admin/default_frame.twig' %}
+
+{% set menus = ['store', 'plugin', 'plugin_list'] %}
+
+{% block title %}{{ 'jsys_sales_period.admin.config.title'|trans }}{% endblock %}
+{% block sub_title %}{{ 'admin.store.plugin.plugin_list'|trans }}{% endblock %}
+
+{% form_theme form '@admin/Form/bootstrap_4_horizontal_layout.html.twig' %}
+
+{% block stylesheet %}{% endblock stylesheet %}
+
+{% block javascript %}{% endblock javascript %}
+
+{% block main %}
+  <form role="form" method="post">
+
+    {{ form_widget(form._token) }}
+
+    <div class="c-contentsArea__cols">
+      <div class="c-contentsArea__primaryCol">
+        <div class="c-primaryCol">
+          <div class="card rounded border-0 mb-4">
+            <div class="card-header">
+              <span>{{ 'jsys_sales_period.admin.config.header'|trans }}</span>
+            </div>
+            <div class="card-body">
+
+              {# ▼ 販売前カートボタン文字 ▼ #}
+              <div class="row">
+                <div class="col-3">
+                  <span>{{ 'jsys_sales_period.admin.config.btnstr_before_sale'|trans }}</span>
+                </div>
+                <div class="col mb-2">
+                  {{ form_widget(form.btnstr_before_sale) }}
+                  {{ form_errors(form.btnstr_before_sale) }}
+                </div>
+              </div>
+              {# ▲ 販売前カートボタン文字 ▲ #}
+              {# ▼ 終了後カートボタン文字 ▼ #}
+              <div class="row">
+                <div class="col-3">
+                  <span>{{ 'jsys_sales_period.admin.config.btnstr_finished'|trans }}</span>
+                </div>
+                <div class="col mb-2">
+                  {{ form_widget(form.btnstr_finished) }}
+                  {{ form_errors(form.btnstr_finished) }}
+                </div>
+              </div>
+              {# ▲ 終了後カートボタン文字 ▲ #}
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="c-conversionArea">
+      <div class="c-conversionArea__container">
+        <div class="row justify-content-between align-items-center">
+          <div class="col-6">
+            <div class="c-conversionArea__leftBlockItem">
+              <a class="c-baseLink" href="{{ url('admin_store_plugin') }}">
+                <i class="fa fa-backward" aria-hidden="true"></i>
+                <span>プラグイン一覧</span>
+              </a>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="row align-items-center justify-content-end">
+              <div class="col-auto">
+                <button class="btn btn-ec-conversion px-5" type="submit">登録</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </form>
+{% endblock %}

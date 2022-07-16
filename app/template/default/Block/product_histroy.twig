@@ -1,0 +1,51 @@
+{% if productHistory is defined %}
+<div class="ec-role">
+    <div class="site-name">最近チェックした商品</div>
+    <div class="center-6-imgs">
+        <ul class="ec-shelfGrid">
+        {% for Product in productHistory %}
+
+           
+                {% if is_granted('ROLE_USER') %}
+                   <li class="ec-shelfGrid__item">
+                        <a href="{{ url('homepage', {pid: Product.id }) }}">
+                            <img src="{{ asset(Product.main_list_image|no_image_product, 'save_image') }}" />
+                        </a>        
+                        <a href="{{ url('homepage', {pid: Product.id }) }}">
+                            <span>{{ Product.name }}</span>
+                        </a><br>  
+                        <b style="color:red">{{ Product.getPrice02IncTaxMin|number_format }}円(税込)</b>             
+                    </li>
+                {% else %}
+                    {% if Product.only_prem_product_display != 1 %}
+                        {% if Product.only_prem_price_display != 1 %}
+                            <li class="ec-shelfGrid__item">
+                                <a href="{{ url('homepage', {pid: Product.id }) }}">
+                                    <img src="{{ asset(Product.main_list_image|no_image_product, 'save_image') }}" />
+                                </a>        
+                                <a href="{{ url('homepage', {pid: Product.id }) }}">
+                                    <span>{{ Product.name }}</span>
+                                </a><br>  
+                                <b style="color:red">{{ Product.getPrice02IncTaxMin|number_format }}円(税込)</b>             
+                            </li>
+                        {% else %}
+                            <li class="ec-shelfGrid__item">
+                                <a href="{{ url('homepage', {pid: Product.id }) }}">
+                                    <img src="{{ asset(Product.main_list_image|no_image_product, 'save_image') }}" />
+                                </a>        
+                                <a href="{{ url('homepage', {pid: Product.id }) }}">
+                                    <span>{{ Product.name }}</span>
+                                </a><br>  
+                                <b style="color:red">*****</b>             
+                            </li>
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+                       
+            
+        {% endfor %}
+        </ul>
+    </div>
+</div>
+{% else %}
+{% endif %}

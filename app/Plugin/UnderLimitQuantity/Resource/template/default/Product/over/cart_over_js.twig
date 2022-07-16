@@ -1,0 +1,27 @@
+<script>
+
+    var $cartBtn = $('div.ec-modal-overlay').find('a.ec-inlineBtn--action');
+    $cartBtn.removeAttr('disabled');
+    $cartBtn.off('click');
+
+    // responseを判別
+    if(data.product_id !== undefined) {
+        var product_id = data.product_id;
+        var under_quantity = data.under_quantity;
+
+        // 最低購入数を下回る場合は、選択数量を最低購入数に変更
+        if($('#quantity' + product_id).length) {
+            $('#quantity' + product_id).val(under_quantity);
+        } else {
+            $('#quantity').val(under_quantity);
+        }
+
+        // カートに進むボタンを無効化
+        $cartBtn.attr('disabled', 'disabled');
+        $cartBtn.on('click', function() {
+            return false;
+        })
+    }
+
+    $('#ec-modal-header').html(this);
+</script>

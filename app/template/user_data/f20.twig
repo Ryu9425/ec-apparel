@@ -1,0 +1,28 @@
+{% extends 'default_frame.twig' %}
+
+{% set recommendProducts = repository('Eccube\\Entity\\Product').getRecommendList() %}
+{% set hitProducts = repository('Eccube\\Entity\\Product').getHitList() %}
+
+{% block main %}
+<div class="ec-role">
+    <div class="center-4-imgs">
+        <p class="add-check-normal text-black">
+            <a href="{{ url('homepage') }}">■ トップページ</a><br>
+            <a href="{{ url('homepage') }}?mode=sk#info">■ 特定商取引法に基づく表記</a><br>
+            <a href="{{ url('homepage') }}?mode=sk#payment">■ お支払い方法について</a><br>
+            <a href="{{ url('homepage') }}?mode=sk">■ 配送方法・送料について</a><br>
+            <a href="{{ url('help_privacy')}}">■ プライバシーポリシー</a><br>
+            <a href="{{ url('contact')}}">■ お問合せ</a><br>
+            <a href="{{ url('mypage')}}">■ マイページ</a><br>
+            <a href="{{ url('mypage_change')}}">■メルマガ登録・解除</a><br>
+            <a href="{{ url('homepage') }}?mode=f1">■ ドロップシッピングの仕入れについて</a><br>
+            <a href="{{ url('homepage') }}?mode=f2">■ ネット仕入れ・販売のコツ</a><br>
+            <a href="{{ url('homepage') }}?mode=f3">■ ネット仕入れ・卸サイト一覧まとめ</a><br>
+            <a href="{{ url('homepage') }}?mode=f5">■ 通信販売業を始めようとされる方へ</a><br>
+            <a href="{{ url('homepage') }}?mode=f6">■アパレル在庫の仕入れの掛け率について</a><br>
+            <a href="{{ url('homepage') }}?mode=f16">■よくある質問</a><br>
+            <a href="{{ url('homepage') }}?mode=f17">■ メールマガジンバックナンバー一覧</a><br>
+        </p>
+    </div>
+</div>
+{% endblock %}

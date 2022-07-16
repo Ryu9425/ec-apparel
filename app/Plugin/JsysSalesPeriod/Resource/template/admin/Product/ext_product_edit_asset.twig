@@ -1,0 +1,47 @@
+{#
+販売期間設定プラグイン(JsysSalesPeriod)
+管理 > 商品管理 > 商品登録・編集
+ - datetimepicker用のスタイル・jsを追加
+#}
+<script src="{{ asset('assets/js/vendor/moment.min.js', 'admin') }}"></script>
+<script src="{{ asset('assets/js/vendor/moment-with-locales.min.js', 'admin') }}"></script>
+<script src="{{ asset('assets/js/vendor/tempusdominus-bootstrap-4.min.js', 'admin') }}"></script>
+<script>
+  $(function() {
+      // datetimepicker と競合するため HTML5 のカレンダ入力を無効に
+      $('input[id*="_jsys_sales_period_sale_"][type="date"]').attr('type','text');
+
+      // datetimepicker で value が消えてしまうので data-value に保持しておく
+      $('input[id*="_jsys_sales_period_sale_"].datetimepicker-input').each(function() {
+    	  $(this).data('value', $(this).val());
+      });
+      
+      $('input[id*="_jsys_sales_period_sale_"].datetimepicker-input').datetimepicker({
+          locale: '{{ eccube_config.locale }}',
+          format: 'YYYY/MM/DD HH:mm:ss',
+          useCurrent: false,
+          buttons: {
+              showToday: true,
+              showClose: true
+          }
+      });
+
+      // datetimepicker で value が消えてしまうので更新
+      $('input[id*="_jsys_sales_period_sale_"].datetimepicker-input').each(function() {
+          $(this).val($(this).data('value'));
+      });
+  });
+</script>
+
+<link rel="stylesheet" href="{{ asset('assets/css/tempusdominus-bootstrap-4.min.css', 'admin') }}">
+<style type="text/css">
+  .datepicker-days th.dow:first-child,
+  .datepicker-days td:first-child {
+    color: #f00;
+  }
+
+  .datepicker-days th.dow:last-child,
+  .datepicker-days td:last-child {
+    color: #00f;
+  }
+</style>

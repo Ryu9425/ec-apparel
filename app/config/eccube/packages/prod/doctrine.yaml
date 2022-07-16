@@ -1,0 +1,34 @@
+# https://github.com/symfony/demo/blob/master/config/packages/prod/doctrine.yaml
+# https://symfony.com/doc/master/bundles/DoctrineBundle/configuration.html
+doctrine:
+    orm:
+        auto_generate_proxy_classes: true
+        proxy_dir:            '%kernel.cache_dir%/doctrine/orm/Proxies'
+        proxy_namespace:      Proxies
+        metadata_cache_driver:
+            type: service
+            id: doctrine.app_cache_provider
+        query_cache_driver:
+            type: service
+            id: doctrine.app_cache_provider
+        result_cache_driver:
+            type: service
+            id: doctrine.app_cache_provider
+        second_level_cache:
+            region_cache_driver:
+                type: service
+                id: doctrine.app_cache_provider
+        
+
+services:
+    doctrine.app_cache_provider:
+        class: Symfony\Component\Cache\DoctrineProvider
+        public: false
+        arguments:
+            - '@doctrine.app_cache_pool'
+
+framework:
+    cache:
+        pools:
+            doctrine.app_cache_pool:
+                adapter: cache.app

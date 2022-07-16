@@ -1,0 +1,15 @@
+<div id="under_quantity_form" class="row">
+    <div class="col-3">
+        <div class="d-inline-block" data-tooltip="true" data-placement="top"
+             title="{{ 'under_quantity.admin.quantity_help'|trans }}">
+            <span>{{ form.class.UnderQuantity.quantity.vars.label|trans }}</span>
+            <i class="fa fa-question-circle fa-lg ml-1"></i>
+        </div>
+    </div>
+    <div class="col mb-2">
+        <div>
+            {{ form_widget(form.class.UnderQuantity.quantity) }}
+            {{ form_errors(form.class.UnderQuantity.quantity) }}
+        </div>
+    </div>
+</div>

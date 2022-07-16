@@ -1,0 +1,11 @@
+/vendor
+.env
+/composer.json
+/package-lock.json
+/bin
+/dockerbuild
+/gulp
+/var
+/app/PluginData/VeriTrans4G/tgMdkPHP/tgMdk
+app/Plugin/SiteKit/composer.json
+app/Plugin/SiteKit/Event.php

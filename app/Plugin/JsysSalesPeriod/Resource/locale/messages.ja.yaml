@@ -1,0 +1,31 @@
+# ==========================================
+# フロント
+# ==========================================
+
+# 商品一覧・詳細 販売前・終了後カートインボタンデフォルト文字列
+jsys_sales_period.btnstr.before_sale.default: 近日販売予定です。
+jsys_sales_period.btnstr.finished.default: 販売は終了しました。
+
+# ==========================================
+# 管理画面
+# ==========================================
+
+# プラグイン設定
+jsys_sales_period.admin.config.title: 販売期間設定プラグイン
+jsys_sales_period.admin.config.header: 設定
+jsys_sales_period.admin.config.btnstr_before_sale: 販売前カートボタン文字
+jsys_sales_period.admin.config.btnstr_finished: 終了後カートボタン文字
+
+# 商品管理 > 商品登録・編集
+jsys_sales_period.admin.product.edit.header: 販売期間設定
+jsys_sales_period.admin.product.edit.sale_start: 開始日時
+jsys_sales_period.admin.product.edit.sale_finish: 終了日時
+jsys_sales_period.admin.product.edit.display_before_sale: 販売前表示
+jsys_sales_period.admin.product.edit.display_finished: 終了後表示
+jsys_sales_period.admin.product.edit.tooltip.header: 設定することで、カートへの追加や一覧・詳細ページの閲覧が制御できます。
+jsys_sales_period.admin.product.edit.tooltip.display_before_sale: 開始前でも一覧・詳細ページで閲覧できるようにします。
+jsys_sales_period.admin.product.edit.tooltip.display_finished: 終了後でも一覧・詳細ページで閲覧できるようにします。
+jsys_sales_period.admin.product.edit.error.date_too_old: 有効な値ではありません。
+jsys_sales_period.admin.product.edit.error.date_reversal: 開始日時以前の日付です。
+jsys_sales_period.admin.product.edit.error.sale_start_empty: 開始日時が入力されていません。
+jsys_sales_period.admin.product.edit.error.sale_finish_empty: 終了日時が入力されていません。

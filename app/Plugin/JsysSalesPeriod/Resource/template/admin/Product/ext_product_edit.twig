@@ -1,0 +1,109 @@
+{#
+販売期間設定プラグイン(JsysSalesPeriod)
+管理 > 商品管理 > 商品登録・編集
+ - 画面に販売期間設定を追加
+#}
+<script>
+  $(function () {
+      // 販売期間設定を商品情報の下に移動
+      $('#jsys_sales_period_columns').insertAfter(
+          $('#form1').find('.c-primaryCol:first').find('.card:first')
+      );
+  });
+</script>
+
+<div id="jsys_sales_period_columns" class="card rounded border-0 mb-4">
+  <div class="card-header">
+    <div class="row">
+      <div class="col-8">
+        <div
+          class="d-inline-block"
+          data-tooltip="true"
+          data-placement="top"
+          title="{{ 'jsys_sales_period.admin.product.edit.tooltip.header'|trans }}"
+        >
+          <span class="card-title">
+            {{ 'jsys_sales_period.admin.product.edit.header'|trans }}
+          </span>
+          <i class="fa fa-question-circle fa-lg ml-1"></i>
+        </div>
+      </div>
+      <div class="col-4 text-right">
+        <a
+          data-toggle="collapse"
+          href="#jsys_sales_period_columns__contents"
+          aria-expanded="false"
+          aria-controls="jsys_sales_period_columns__contents"
+        >
+          <i class="fa fa-angle-up fa-lg"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div id="jsys_sales_period_columns__contents" class="collapse show ec-cardCollapse">
+    <div class="card-body">
+
+      {# ▼ 開始日時 ▼ #}
+      <div class="row">
+        <div class="col-3">
+          <span>{{ 'jsys_sales_period.admin.product.edit.sale_start'|trans }}</span>
+        </div>
+        <div class="col mb-2">
+          {{ form_widget(form.jsys_sales_period_sale_start) }}
+          {{ form_errors(form.jsys_sales_period_sale_start) }}
+        </div>
+      </div>
+      {# ▲ 開始日時 ▲ #}
+      {# ▼ 終了日時 ▼ #}
+      <div class="row">
+        <div class="col-3">
+          <span>{{ 'jsys_sales_period.admin.product.edit.sale_finish'|trans }}</span>
+        </div>
+        <div class="col mb-2">
+          {{ form_widget(form.jsys_sales_period_sale_finish) }}
+          {{ form_errors(form.jsys_sales_period_sale_finish) }}
+        </div>
+      </div>
+      {# ▲ 終了日時 ▲ #}
+      {# ▼ 開始前表示 ▼ #}
+      <div class="row">
+        <div class="col-3">
+          <div
+            class="d-inline-block"
+            data-tooltip="true"
+            data-placement="top"
+            title="{{ 'jsys_sales_period.admin.product.edit.tooltip.display_before_sale'|trans }}"
+          >
+            <span>{{ 'jsys_sales_period.admin.product.edit.display_before_sale'|trans }}</span>
+            <i class="fa fa-question-circle fa-lg ml-1"></i>
+          </div>
+        </div>
+        <div class="col mb-2">
+          {{ form_widget(form.jsys_sales_period_display_before_sale) }}
+          {{ form_errors(form.jsys_sales_period_display_before_sale) }}
+        </div>
+      </div>
+      {# ▲ 開始前表示 ▲ #}
+      {# ▼ 終了後表示 ▼ #}
+      <div class="row">
+        <div class="col-3">
+          <div
+            class="d-inline-block"
+            data-tooltip="true"
+            data-placement="top"
+            title="{{ 'jsys_sales_period.admin.product.edit.tooltip.display_finished'|trans }}"
+          >
+            <span>{{ 'jsys_sales_period.admin.product.edit.display_finished'|trans }}</span>
+            <i class="fa fa-question-circle fa-lg ml-1"></i>
+          </div>
+        </div>
+        <div class="col mb-2">
+          {{ form_widget(form.jsys_sales_period_display_finished) }}
+          {{ form_errors(form.jsys_sales_period_display_finished) }}
+        </div>
+      </div>
+      {# ▲ 終了後表示 ▲ #}
+
+    </div>
+  </div>
+</div>
